@@ -1,0 +1,29 @@
+# Python virtual environments
+.venv/
+venv/
+myenv/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.ipynb_checkpoints/
+
+# Environment variables & secrets (CRITICAL: Never commit API keys)
+.env
+.env.*
+!.env.example
+
+# Node / scratch
+node_modules/
+scratch/
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
