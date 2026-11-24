@@ -11,12 +11,21 @@ from langgraph.checkpoint.memory import InMemorySaver
 # Robustly find and load .env from current or parent directories
 load_dotenv(find_dotenv())
 
+# Retrieve API key from environment or Streamlit secrets
+groq_api_key = os.getenv("GROQ_API_KEY")
+if not groq_api_key:
+    try:
+        import streamlit as st
+        groq_api_key = st.secrets.get("GROQ_API_KEY")
+    except Exception:
+        pass
+
 # Initialize Groq LLM with a valid model ID
 from langchain_groq import ChatGroq
 
 llm = ChatGroq(
-    model="llama-3.1-8b-instant",
-    api_key=os.getenv("GROQ_API_KEY"),
+    model="openai/gpt-oss-20b",
+    api_key=groq_api_key,
     temperature=0.5
 )
 
